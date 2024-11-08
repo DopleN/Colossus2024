@@ -1,0 +1,272 @@
+:root {
+    --main-bg-color: white;
+    --header-bg-color: rgb(88, 3, 3);
+    --footer-bg-color: black;
+    --text-color: black;
+    --link-color: blue;
+    --hover-color: #ddd;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    direction: rtl;
+    text-align: center;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+
+.product-card {
+    background-color: var(--main-bg-color);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 200px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.product-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 15px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.product-info h3,
+.product-info p,
+.product-info .price {
+    margin: 5px 0;
+}
+
+.product-info .price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.product-info .comingsoon-badge {
+    background-color: #000;
+    color: #fff;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+footer {
+    width: 100%;
+    background-color: var(--footer-bg-color);
+    color: white;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-column {
+    text-align: center;
+}
+
+.footer-column h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+.footer-column ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 5px;
+}
+
+.footer-column ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: var(--hover-color);
+}
+
+header h1 {
+    font-size: 25px;
+}
+
+.tophead {
+    background-color: var(--header-bg-color);
+    color: white;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 2px solid black;
+}
+
+.sign a {
+    color: var(--text-color);
+    transition: transform 0.5s ease;
+}
+
+.sign a:hover {
+    cursor: pointer;
+    color: var(--link-color);
+}
+
+.logo-photo img {
+    width: 10vw;
+}
+
+.logo-photo {
+    position: relative;
+    width: 100%;
+    left: 95%;
+    transform: translateX(-50%);
+}
+
+.topleft {
+    position: relative;
+    right: 44%;
+    font-size: 1.5vw;
+}
+
+.buttons-top {
+    position: relative;
+    bottom: 6vw;
+    gap: 1vw;
+    left: 5%;
+}
+
+.buttons-top button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5vw;
+}
+
+.buttons-top button:hover {
+    cursor: pointer;
+}
+
+.shopping-bag {
+    position: fixed;
+}
+
+.search-container {
+    position: relative;
+    border: 0.1vw solid black;
+    border-radius: 0.7vw;
+    width: fit-content;
+    right: 30%;
+    bottom: 7vw;
+}
+
+#input_ {
+    background-color: transparent;
+    border: none;
+    padding: 1vw;
+    font-size: 1.5vw;
+}
+
+#input_:hover,
+#input_:focus,
+#input_:active {
+    outline: none;
+    border: none;
+}
+
+.searchbox button {
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    font-size: 1.5vw;
+}
+
+.searchbox button:hover {
+    cursor: pointer;
+}
+
+.selection-topbuttons {
+    display: flex;
+    gap: 2vw;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.selection-topbuttons .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.selection-topbuttons .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.selection-topbuttons .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.selection-topbuttons .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.selection-topbuttons .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.selection-topbuttons button {
+    border: none;
+    color: black;
+    background-color: white;
+    font-weight: bold;
+    padding: 1vw 2vw;
+    font-size: 1.5vw;
+    position: relative;
+    cursor: pointer;
+}
+
+.dropbtn {
+    font-size: 1.5vw;
+}

@@ -1,0 +1,24 @@
+.fullscreen-video {
+  height: 100vh;
+  padding-bottom: 1rem;
+}
+
+.fullscreen-video video {
+  object-fit: fill;
+}
+
+@media (max-width: 768px) {
+  .fullscreen-video {
+    margin-top: 5rem;
+    height: auto;
+  }
+  
+  .fullscreen-video video {
+    object-fit: contain;
+  }
+}
+
+.active-link {
+  font-weight: bold;
+}
+s

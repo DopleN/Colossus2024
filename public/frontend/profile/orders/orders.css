@@ -1,0 +1,48 @@
+@media (max-width: 768px) {
+  .table {
+    font-size: 0.875rem; /* Smaller font size on mobile devices */
+  }
+
+  .table th, .table td {
+    padding: 0.75rem 0.5rem; /* Adjust padding */
+  }
+
+  .table img {
+    width: 30px; /* Smaller images on mobile */
+    height: 30px;
+    max-width: 100%; /* Make sure images don't overflow */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .item-details {
+    font-size: 0.875rem; /* Smaller font for item details */
+  }
+
+  /* Stack items in a more mobile-friendly layout */
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  /* Example of hiding a non-essential column */
+  .table .non-essential {
+    display: none; /* Hide a specific column on mobile */
+  }
+
+  /* Increased spacing between rows */
+  .table tr {
+    margin-bottom: 10px; /* Adds space between rows */
+    display: block; /* Allow rows to stack */
+  }
+
+  .table td {
+    display: block; /* Stack the table cells vertically */
+    width: 100%; /* Make each cell full width */
+    box-sizing: border-box; /* Include padding in width */
+    padding: 0.5rem; /* Adjust cell padding */
+  }
+
+  .table th {
+    display: none; /* Optionally hide headers for a more compact view */
+  }
+}
+s
