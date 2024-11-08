@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="/dashboard/styles/admin-dashboard.css" />
+  <title>Admin Dashboard</title>
+</head>
+
+<body>
+  <!-- Loading Indicator -->
+  <div class="loading-screen" id="loading-screen" style="z-index:9999">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <h1 class="text-center">Admin Panel</h1>
+    <h4 class="text-center">Manage your platform's services effortlessly.</h4>
+  </div>
+
+  <!-- Navbar -->
+  <%- include('./dashboard-navbar') %>
+
+  <div class="text-center mt-5">
+    <h5>Warning: Deleting a provider will also remove all related products.</h5>
+  </div>
+
+  <main class="container mt-5 mb-5">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="list-group col-lg-2 col-sm-3 sidebar-container">
+        <a class="list-group-item list-group-item-action active tab-view all-suppliers-tab" id="list-all-suppliers"
+          data-bs-toggle="list" href="#all_suppliers" role="tab" aria-controls="home">View Providers</a>
+        <a class="list-group-item list-group-item-action tab-view add-provider-tab" id="list-add-provider"
+          data-bs-toggle="list" href="#add_provider" role="tab" aria-controls="profile">Add Provider</a>
+      </div>
+
+      <!-- Main Content -->
+      <div class="col-8 main-content">
+        <div class="row providers-list">
+          <% if (providers.length === 0) { %>
+          <h4>No providers available at the moment.</h4>
+          <% } else { providers.forEach(provider => { %>
+          <div class="col-md-3 col-sm-6 col-12 mb-4">
+            <div class="card position-relative" data-provider-id="<%= provider._id %>">
+              <!-- Delete Button with Confirmation -->
+              <button type="button" class="btn btn-outline-danger delete-provider" onclick="confirmDelete('<%= provider._id %>')">
+                Delete
+              </button>
+              <div class="card-body">
+                <h5 class="card-title"><%= provider.name %></h5>
+                <p class="card-text"><strong>Location:</strong> <%= provider.location %></p>
+                <p class="card-text"><strong>Categories:</strong>
+                  <% if (provider.categories.length === 0) { %>
+                  <p>This provider has no categories assigned.<br>Please assign some.</p>
+                  <% } else { %>
+                  <% const providerCategories = provider.categories.map(category => category.name); %>
+                  <%= providerCategories.join(', ') %>
+                  <% } %>
+                </p>
+              </div>
+            </div>
+          </div>
+          <% }) } %>
+        </div>
+
+        <!-- Add Provider Form -->
+        <div class="col add-provider hidden">
+          <h1 class="text-center mb-4">Add Provider</h1>
+
+          <form class="row add-provider-form" action="/api/providers" method="POST">
+            <div class="col-6 mb-3">
+              <label for="providerName" class="form-label">Provider Name</label>
+              <input type="text" class="form-control" name="name" id="providerName" placeholder="Enter provider name" required />
+            </div>
+
+            <div class="col-6 mb-3">
+              <label for="location" class="form-label">Location</label>
+              <select class="form-select" name="location" required>
+                <option value="" disabled selected>Select location</option>
+                <!-- Dynamic location options -->
+              </select>
+            </div>
+
+            <div class="col-6 mb-3 form-check form-switch">
+              <% if (categories.length == 0) { %>
+              <p>No categories available.<br>Please add categories first.</p>
+              <% } else { %>
+              <label class="form-label mb-2">Select Categories</label><br />
+              <% categories.forEach(category => { %>
+              <input type="checkbox" class="btn-check" id="category-<%= category._id %>" autocomplete="off" name="categories"
+                value="<%= category._id %>" />
+              <label class="btn btn-outline-primary" for="category-<%= category._id %>"><%= category.name %></label><br /><br />
+              <% }) } %>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-center">
+              <button type="submit" class="btn btn-primary mx-auto">Add Provider</button>
+            </div>
+          </form>
+
+          <div class="feedback-message container text-center mt-4 fs-3"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <!-- Custom JS for Providers -->
+  <script src="/dashboard/js/providers.js"></script>
+
+  <script>
+    function confirmDelete(providerId) {
+      if (confirm("Are you sure you want to delete this provider? This action cannot be undone.")) {
+        // Redirect to delete provider route
+        window.location.href = `/delete-provider/${providerId}`;
+      }
+    }
+  </script>
+</body>
+
+</html>

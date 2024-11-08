@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" />
+
+  <link rel="stylesheet" href="/frontend/main.css">
+  <link rel="stylesheet" href="/frontend/shipping/shipping.css">
+  <title>Colossus Shipping & Returns</title>
+</head>
+
+<body class="mb-5">
+  <%- include('./components/preloader') %>
+  <%- include('./components/search-modal') %>
+
+  <div class="content">
+    <%- include('./components/header') %>
+    <main class="container-fluid mb-5">
+      <section class="container py-5">
+        <div class="row mb-4">
+          <div class="col text-center">
+            <h1 class="display-4 fw-bold">Shipping & Returns</h1>
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col-md-12 mb-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <div class="d-flex align-items-center mb-3">
+                  <img src="../photos/delivery-icons-02-1-8abdba4a319a1be14d74997351f521fd.png" class="me-3"
+                    alt="Standard Delivery Icon" style="width: 50px; height: auto;">
+                  <h2 class="card-title">Standard Delivery</h2>
+                </div>
+                <ul class="list-unstyled">
+                  <li>Usually delivered within <strong>10 working days</strong>.</li>
+                  <li>Select <strong>Standard Delivery</strong> at the checkout.</li>
+                  <li>Deliveries will be shipped via DPD, Skynet, DHL, or Local Postal Operator depending on the weight
+                    and value. Once the parcel has arrived in your country it will be passed on to an internal post
+                    service and be subject to their standard delivery procedures. Our products are sold on a DDU
+                    (Delivery Duty unpaid) basis. Additional taxes, fees, or levies may apply according to local
+                    legislation.</li>
+                  <li>To find out more about the duties and tax, please contact customs authority in the delivery
+                    destination country, or visit a third-party website (such as easyship) for guidance. Colossus is
+                    not responsible for the actual customs charges.</li>
+                </ul>
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <hr>
+
+        <div class="row mb-4">
+          <div class="col-md-12">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h2 class="h4 fw-bold">Need to return your order?</h2>
+                <h3 class="h5">How do I return my order?</h3>
+                <ul class="list-unstyled">
+                  <li>We advise our customers to return any unwanted goods within 14 days.</li>
+                  <li>Please note that we do not offer free delivery on returns.</li>
+                  <li>You can process a return easily in our stores.</li>
+                  <li>You can also return your items directly to us using the address mentioned below:</li>
+                  <li>
+                    <address>
+                      Colossus Internet Returns<br>
+                      Door 2<br>
+                      5th Avenue 46st<br>
+                      Central Park<br>
+                      NEW YORK CITY
+                    </address>
+                  </li>
+                  <li>We advise getting a certificate of posting just to ensure we receive your unwanted items safely as
+                    they are your responsibility until we receive them.</li>
+                  <li>Items must not have been worn, used, or washed. Items must be in original packaging and all tags
+                    attached. Shoes must be returned with the original shoe box.</li>
+                  <li>Once we have received your order, we will process your refund within a few working days.</li>
+                  <li>Please check your email inbox as we’ll provide you with updates about the status of your return.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h2 class="h4 fw-bold">Still Need Help? Don’t Worry...</h2>
+            <p>We’re here to help<br><br>
+              Sun-Fri : 8AM-6PM <br>
+              <i class="bi bi-telephone"></i> +1 (954) 592-9223 <br><br>
+              <i class="bi bi-envelope"></i> Colossus@gmail.com
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <%- include('./components/footer') %>
+
+  </div>
+
+  <!-- MODALS -->
+  <%- include('./components/cart-modal') %>
+  <%- include('./components/quickview-modal') %>
+  <% if(!session.userId) { %>
+  <%- include('./components/register-modal') %>
+  <%- include('./components/login-modal') %>
+  <% } %>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script type="module" src="/frontend/shipping/shipping.js"></script>
+</body>
+
+</html>

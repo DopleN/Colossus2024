@@ -1,0 +1,104 @@
+<!-- Filters Modal -->
+<div class="modal fade" id="filters-modal" data-category-id="<%= brands.length == 0 ? brand._id : category._id %>" tabindex="-1" aria-labelledby="filters-label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="filters-label">Filter Products</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Filters Accordion -->
+        <div class="accordion" id="accordionExample">
+          <% if (brands && brands.length > 0) { %>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingBrand">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBrand" aria-expanded="true" aria-controls="collapseBrand">
+                Brand
+              </button>
+            </h2>
+            <div id="collapseBrand" class="accordion-collapse collapse show" aria-labelledby="headingBrand" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <% brands.forEach(brand => { %>
+                <div class="form-check form-switch">
+                  <input class="filter form-check-input filter-brand" type="checkbox" role="switch" id="<%= brand.name %>">
+                  <label class="form-check-label" for="<%= brand.name %>"><%= brand.name %></label>
+                </div>
+                <% }) %>
+              </div>
+            </div>
+          </div>
+          <% } %>
+
+          <!-- Gender Filter -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingGender">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGender" aria-expanded="false" aria-controls="collapseGender">
+                Gender
+              </button>
+            </h2>
+            <div id="collapseGender" class="accordion-collapse collapse" aria-labelledby="headingGender" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <div class="form-check form-switch">
+                  <input class="filter filter-gender form-check-input" type="checkbox" role="switch" id="men">
+                  <label class="form-check-label" for="men">Men</label>
+                </div>
+                <div class="form-check form-switch">
+                  <input class="filter filter-gender form-check-input" type="checkbox" role="switch" id="women">
+                  <label class="form-check-label" for="women">Women</label>
+                </div>
+                <div class="form-check form-switch">
+                  <input class="filter filter-gender form-check-input" type="checkbox" role="switch" id="kids">
+                  <label class="form-check-label" for="kids">Kids</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Size Filter -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSize">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSize" aria-expanded="false" aria-controls="collapseSize">
+                Size
+              </button>
+            </h2>
+            <div id="collapseSize" class="accordion-collapse collapse" aria-labelledby="headingSize" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <% for (let i = 36; i <= 48; i++) { %>
+                <div class="form-check form-switch">
+                  <input class="filter form-check-input filter-size" type="checkbox" role="switch" id="<%= i %>">
+                  <label class="form-check-label" for="<%= i %>"><%= i %></label>
+                </div>
+                <% } %>
+              </div>
+            </div>
+          </div>
+
+          <!-- Price Filter -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingPrice">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePrice" aria-expanded="false" aria-controls="collapsePrice">
+                Price
+              </button>
+            </h2>
+            <div id="collapsePrice" class="accordion-collapse collapse" aria-labelledby="headingPrice" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <label for="priceRange" class="form-label">Price Range</label>
+                <input type="range" class="form-range filter-price" id="priceRange" min="0" max="5000" step="10" oninput="document.getElementById('currentPrice').innerText = this.value">
+                <div class="d-flex justify-content-between">
+                  <span id="minPrice">0</span>
+                  <span id="currentPrice">2500</span>
+                  <span id="maxPrice">5000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" id="reset-filters-btn">Reset Filters</button>
+        <button type="button" id="apply-filters-btn" class="btn btn-primary flex-grow-1">Apply Filters</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="/admin/assets/styles/main.css" />
+
+  <title>Social Media Manager</title>
+</head>
+
+<body>
+  <!-- Loading Spinner -->
+  <div class="loading-overlay" id="loadingOverlay" style="z-index:9999">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <%- include('./admin_navigation') %>
+
+  <main class="container my-5">
+    <div class="row">
+      <div class="col-lg-3 col-md-4 sidebar">
+        <a class="nav-link active text-light bg-dark" id="post-facebook-tab" data-bs-toggle="list" href="#facebook-post-form" role="tab" aria-controls="post-facebook">Create Facebook Post</a>
+      </div>
+
+      <div class="col-lg-9 col-md-8 content">
+        <div class="tab-content">
+          <!-- Facebook Post Form Section -->
+          <div class="tab-pane fade show active" id="facebook-post-form">
+            <form id="createPostForm" class="p-4 border rounded shadow-sm">
+              <div class="mb-3">
+                <label for="content" class="form-label">Post Content:</label>
+                <textarea id="content" name="content" class="form-control" placeholder="Write your post here..." required></textarea>
+              </div>
+
+              <div class="mb-3">
+                <label for="productSelector" class="form-label">Select a Product:</label>
+                <select id="productSelector" name="product" class="form-select" required>
+                  <option value="" disabled selected>Select a product...</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Post to Facebook</button>
+
+              <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input d-none" id="showProductName" checked>
+                <label class="form-check-label" for="showProductName">Include Product Name</label>
+              </div>
+
+              <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input d-none" id="showProductPrice" checked>
+                <label class="form-check-label" for="showProductPrice">Include Product Price</label>
+              </div>
+
+              <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input d-none" id="showProductSizes" checked>
+                <label class="form-check-label" for="showProductSizes">Include Available Sizes</label>
+              </div>
+            </form>
+          </div>
+
+          <!-- Display Posted Content -->
+          <div class="tab-pane fade" id="posted-content" data-container="posted-content-display">
+            <!-- Dynamic content will be inserted here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script type="module" src="/admin/assets/js/socialMedia.js"></script>
+</body>
+
+</html>

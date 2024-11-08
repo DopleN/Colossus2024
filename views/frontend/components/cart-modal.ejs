@@ -1,0 +1,83 @@
+<!-- Cart Modal -->
+<div class="modal fade" id="cart-modal" tabindex="-1" aria-labelledby="cart-label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="cart-label">Your Cart</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Image</th>
+              <th scope="col">Item</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Price</th>
+              <th scope="col">Size</th>
+              <th scope="col">&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody id="cart-items-body">
+            <!-- Dynamic cart items go here -->
+          </tbody>
+        </table>
+
+        <!-- Cart total -->
+        <div class="d-flex justify-content-between">
+          <h5>Total</h5>
+          <h5 class="cart-total">$0.00</h5>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <span class="me-auto hidden fs-5" id="empty-cart-message"><strong>Your cart is empty..</strong></span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="/checkout" type="button" class="btn btn-primary">Checkout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Example function to dynamically populate the cart
+  function updateCart(cartItems) {
+    const cartItemsBody = document.getElementById('cart-items-body');
+    const emptyCartMessage = document.getElementById('empty-cart-message');
+    const cartTotal = document.querySelector('.cart-total');
+
+    if (cartItems.length === 0) {
+      emptyCartMessage.classList.remove('hidden');
+      cartTotal.textContent = '$0.00';
+    } else {
+      emptyCartMessage.classList.add('hidden');
+      cartItemsBody.innerHTML = ''; // Clear previous items
+      let total = 0;
+
+      cartItems.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td><img src="${item.imageUrl}" class="img-fluid" alt="${item.name}" style="width: 50px; height: auto;"></td>
+          <td>${item.name}</td>
+          <td>${item.quantity}</td>
+          <td>$${item.price.toFixed(2)}</td>
+          <td>${item.size}</td>
+          <td><button type="button" class="btn btn-outline-danger btn-sm" onclick="removeCartItem(this, '${item.id}')">×</button></td>
+        `;
+        cartItemsBody.appendChild(row);
+
+        total += item.price * item.quantity;
+      });
+
+      cartTotal.textContent = `$${total.toFixed(2)}`;
+    }
+  }
+
+  // Function to remove an item from the cart
+  function removeCartItem(button, itemId) {
+    const row = button.closest('tr');
+    row.remove();
+
+    // Optionally, recalculate total after removal
+    // updateCart(getUpdatedCartItems());
+  }
+</script>

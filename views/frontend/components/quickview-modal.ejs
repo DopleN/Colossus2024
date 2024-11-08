@@ -1,0 +1,49 @@
+<!-- Product Modal -->
+<div class="modal fade" id="quick-view-modal" tabindex="-1" aria-labelledby="quick-view-modal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="product-label">Product Quick View</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div style="height: 350px; overflow: hidden;">
+          <img src="" alt="" class="product-modal-image img-fluid" width="100%"
+            style="height: 100%; object-fit: cover;">
+        </div>
+        <div class="product-modal-details text-center mb-3">
+          <h5 class="product-modal-title my-3"><strong>Campus Ones</strong></h5>
+          <p class="product-modal-description text-start lead">High-quality running shoes for all your athletic
+            needs.
+            Available in multiple sizes.
+          </p>
+          <p class="product-modal-price"><strong>139$</strong></p>
+        </div>
+        <form class="add-to-cart-form" action="#add-to-cart" method="POST" data-product-id="123">
+          <div class="mb-2">
+            <label for="size-option" class="form-label">Choose Size</label>
+            <select class="form-select" name="size" id="size-option" required>
+              <option value="" disabled selected>
+                Please select a size
+              </option>
+              <option value="39">39</option>
+              <option value="40">40</option>
+              <option value="41">41</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="quantity-option" class="form-label">Quantity</label>
+            <input type="number" class="form-control" name="quantity" id="quantity-option" min="1" required>
+          </div>
+          <button type="submit" class="d-flex justify-content-center btn btn-primary mx-auto mt-3 add-to-cart-btn">
+            Add To Cart
+          </button>
+        </form>
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="/product/id/pid" class="btn btn-outline-primary checkout-btn">View Product</a>
+      </div>
+    </div>
+  </div>
+</div>

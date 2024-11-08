@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="/frontend/main.css">
+  <link rel="stylesheet" href="/frontend/accessibility/accessibility.css">
+  <title>Colossus Accessibility</title>
+</head>
+
+<body class="mb-5">
+  <%- include('./components/preloader') %>
+  <%- include('./components/search-modal') %>
+
+  <div class="content">
+    <%- include('./components/header') %>
+
+    <main class="container-fluid mb-5">
+      <section class="container py-5">
+        <div class="row mb-4">
+          <div class="col text-center">
+            <h1 class="display-4 fw-bold">Accessibility</h1>
+            <p class="lead">We recognize the importance of providing a website that is accessible and usable for all
+              users. To do this we have adhered to a set of standards and guidelines.</p>
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col-md-12">
+            <div class="card p-4 mb-4 shadow-sm">
+              <h2 class="h4 fw-bold">Approach</h2>
+              <p>We believe that this website meets the requirements of the level A criteria of the World Wide Web
+                Consortium Web Accessibility Initiative (WCAG WAI) 2.0 guidelines.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col-md-12">
+            <div class="card p-4 mb-4 shadow-sm">
+              <h2 class="h4 fw-bold">Features</h2>
+              <ul class="list-unstyled">
+                <li class="mb-3"><strong>Text size:</strong> You can adjust the text size by using your browser’s text
+                  resize options: View – Text Size or View - Zoom - Your desired zoom option.</li>
+                <li class="mb-3"><strong>Alternative text for images:</strong> All images have been given appropriate
+                  alternative text.</li>
+                <li class="mb-3"><strong>Heading elements:</strong> HTML heading elements have been used to represent
+                  page structure, supporting assistive technologies that allow page navigation from heading to heading.
+                </li>
+                <li class="mb-3"><strong>Link text:</strong> A hyperlink should make sense out of context and all
+                  hyperlinks are clearly presented in a different text style.</li>
+                <li class="mb-3"><strong>JavaScript independence:</strong> Where JavaScript or other scripts are used
+                  for navigation or functionality, an alternative mechanism has been put in place in case your browser
+                  does not support these scripts.</li>
+                <li class="mb-3"><strong>Colour contrast:</strong> Text and background colours have been checked to
+                  ensure the contrast is adequate. Also, no information is referenced by colour alone.</li>
+                <li class="mb-3"><strong>Style Sheets:</strong> We have used Cascading Style Sheets (CSS) to control the
+                  presentation of pages and have used properly structured markup for content. If style sheets are not
+                  supported or are turned off, information on the site can still be accessed and read.</li>
+                <li class="mb-3"><strong>Share price charting:</strong> We have provided a large font version of our
+                  share price charting tool.</li>
+              </ul>
+              <br>
+              <p>If you have trouble accessing any of the information on the website, please do contact us.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <%- include('./components/footer') %>
+  </div>
+
+  <!-- MODALS -->
+  <%- include('./components/cart-modal') %>
+  <%- include('./components/quickview-modal') %>
+  <% if(!session.userId) { %>
+  <%- include('./components/register-modal') %>
+  <%- include('./components/login-modal') %>
+  <% } %>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script type="module" src="/frontend/accessibility/accessibility.js"></script>
+</body>
+
+</html>
